@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Flask example</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"/>
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -14,7 +14,7 @@
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/">Welcome</a>
+              <a href="/welcome">Welcome</a>
             </li>
             <li>
               <a href="/">Link two</a>
