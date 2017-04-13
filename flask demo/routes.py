@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import *
 
 # Main app:
 app = Flask(__name__)
@@ -12,6 +12,22 @@ def home():
 @app.route('/welcome')
 def welcome():
     return render_template("welcome.html")
+
+# Hello (access):
+@app.route('/hello')
+def hello():
+    return render_template("hello.html")
+
+# Log in:
+@app.route('/log', methods=['GET', 'POST'])
+def log():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
+            error = 'Invalid credentials. Please try again.'
+        else:
+            return redirect(url_for('hello'))
+    return render_template("log.html", error=error)
 
 if __name__ == '__main__':
     app.run()
